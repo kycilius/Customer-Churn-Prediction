@@ -1,0 +1,332 @@
+/* =========================
+   ROOT VARIABLES
+========================= */
+:root {
+    --primary: #0f172a;
+    --secondary: #3b82f6;
+    --accent: #10b981;
+    --danger: #ef4444;
+
+    --bg: radial-gradient(circle at top left, #1e293b, #020617);
+    --glass-bg: rgba(255, 255, 255, 0.12);
+    --glass-border: rgba(255, 255, 255, 0.25);
+
+    --text-main: #f8fafc;
+    --text-light: #cbd5f5;
+}
+
+/* =========================
+   BASE RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text-main);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* =========================
+   BANK LOGO + NAME
+========================= */
+.bank-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.bank-logo img {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px;
+}
+
+.bank-name {
+    font-size: 1.05rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+/* Gradient text – Dark Mode */
+.gradient-text {
+    background: linear-gradient(
+        90deg,
+        #ffffff 0%,
+        #d1fae5 40%,
+        #10b981 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* Fallback */
+    color: #10b981;
+}
+
+/* Glow only in dark mode */
+.sidebar .gradient-text {
+    text-shadow: 0 0 12px rgba(16, 185, 129, 0.35);
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar {
+    width: 260px;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-right: 1px solid var(--glass-border);
+    padding: 20px;
+    position: fixed;
+    height: 100%;
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+.main-content {
+    margin-left: 260px;
+    flex: 1;
+    padding: 40px;
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+/* =========================
+   GRID LAYOUT
+========================= */
+.grid-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+/* =========================
+   GLASS CARDS
+========================= */
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.card-title {
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   FORM
+========================= */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-group label {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 11px;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    outline: none;
+}
+
+.form-group input::placeholder {
+    color: #e5e7eb;
+}
+
+.full {
+    grid-column: span 2;
+}
+
+/* =========================
+   BUTTON
+========================= */
+button {
+    padding: 14px;
+    background: linear-gradient(135deg, var(--secondary), #2563eb);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+}
+
+/* =========================
+   RESULT
+========================= */
+.result-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.safe {
+    color: var(--accent);
+}
+
+.risk {
+    color: var(--danger);
+}
+
+.neutral {
+    color: var(--text-light);
+}
+
+/* =========================
+   CREATORS SECTION
+========================= */
+.creators-card {
+    margin-top: 40px;
+}
+
+.group-name {
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-light);
+}
+
+.creator-list {
+    list-style: none;
+}
+
+.creator-list li {
+    padding: 8px 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.creator-list i {
+    color: var(--accent);
+}
+
+/* =========================
+   LIGHT MODE OVERRIDES
+========================= */
+body.light-mode {
+    --bg: #f8fafc;
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --text-main: #0f172a;
+    --text-light: #475569;
+    color: #0f172a;
+}
+
+/* Sidebar light */
+body.light-mode .sidebar {
+    background: rgba(255, 255, 255, 0.85);
+    color: #0f172a;
+}
+
+/* Sidebar links */
+body.light-mode .nav-links a {
+    color: #334155;
+}
+
+body.light-mode .nav-links a:hover,
+body.light-mode .nav-links a.active {
+    background: rgba(0, 0, 0, 0.06);
+    color: #0f172a;
+}
+
+/* Cards light */
+body.light-mode .card {
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+/* Inputs light */
+body.light-mode input,
+body.light-mode select {
+    background: rgba(255, 255, 255, 0.95);
+    color: #0f172a;
+}
+
+body.light-mode input::placeholder {
+    color: #64748b;
+}
+
+/* Button light */
+body.light-mode button {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+/* Gradient text – Light Mode */
+body.light-mode .gradient-text {
+    background: linear-gradient(
+        90deg,
+        #064e3b 0%,
+        #059669 50%,
+        #10b981 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: #059669;
+}
+
+/* Remove glow in light mode */
+body.light-mode .sidebar .gradient-text {
+    text-shadow: none;
+}

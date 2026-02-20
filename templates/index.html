@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank of HIT Haldia – Customer Churn Prediction</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="logo bank-logo">
+    <img src="{{ url_for('static', filename='hit_logo.png') }}" alt="HIT Haldia Logo">
+    <span class="bank-name gradient-text">Bank of HIT Haldia</span>
+</div>
+
+    <div class="nav-links">
+        <a class="active"><i class="fas fa-chart-line"></i> Churn Prediction</a>
+       <a href="#creators">
+    <i class="fas fa-user-friends"></i> Creators
+</a>
+        <a href="#" onclick="toggleTheme()">
+    <i class="fas fa-moon"></i>
+    <span id="themeText">Dark Mode</span>
+</a>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+
+    <div class="header">
+    <h2 style="font-weight:700;">Customer Churn Analysis</h2>
+    <p style="color:#cbd5f5;">AI-powered customer risk assessment</p>
+</div>
+
+    <div class="grid-container">
+
+        <!-- Form Card -->
+        <div class="card">
+            <h3 class="card-title">Customer Details</h3>
+
+            <form method="POST">
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Credit Score</label>
+                        <input name="CreditScore" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Geography</label>
+                        <select name="Geography">
+                            <option>France</option>
+                            <option>Germany</option>
+                            <option>Spain</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select name="Gender">
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input name="Age" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tenure</label>
+                        <input name="Tenure" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Balance</label>
+                        <input name="Balance" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Number of Products</label>
+                        <input name="NumOfProducts" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Card Type</label>
+                        <select name="Card Type">
+                            <option>Silver</option>
+                            <option>Gold</option>
+                            <option>Platinum</option>
+                            <option>Diamond</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+    <label>Has Credit Card</label>
+    <select name="HasCrCard">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+                    <div class="form-group">
+                        <label>Active Member</label>
+                        <select name="IsActiveMember">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Estimated Salary</label>
+                        <input name="EstimatedSalary" required>
+                    </div>
+
+                    <div class="form-group full">
+                        <button type="submit">Predict Churn</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+        <!-- Result Card -->
+        <div class="card result-card">
+            <h3 class="card-title">Prediction Result</h3>
+
+            {% if prediction == 1 %}
+                <div class="result risk">⚠ High Risk of Churn</div>
+            {% elif prediction == 0 %}
+                <div class="result safe">✔ Customer Likely to Stay</div>
+            {% else %}
+                <div class="result neutral">Submit details to view prediction</div>
+            {% endif %}
+        </div>
+
+    </div>
+    <!-- Creators Section -->
+<div id="creators" class="card creators-card">
+    <h3 class="card-title">Project Creators</h3>
+
+    <p class="group-name">Bank of HIT Haldia – ML Project Team</p>
+
+    <ul class="creator-list">
+        <li><i class="fas fa-user"></i> Sufyan Nadeem</li>
+        <li><i class="fas fa-user"></i> Member 2 Name</li>
+        <li><i class="fas fa-user"></i> Member 3 Name</li>
+        <li><i class="fas fa-user"></i> Member 4 Name</li>
+    </ul>
+</div>
+</div>
+
+</body>
+</html>
+<script>
+    function toggleTheme() {
+        const body = document.body;
+        const themeText = document.getElementById("themeText");
+
+        body.classList.toggle("light-mode");
+
+        if (body.classList.contains("light-mode")) {
+            themeText.innerText = "Light Mode";
+            localStorage.setItem("theme", "light");
+        } else {
+            themeText.innerText = "Dark Mode";
+            localStorage.setItem("theme", "dark");
+        }
+    }
+
+    // Persist theme on reload
+    window.onload = () => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "light") {
+            document.body.classList.add("light-mode");
+            document.getElementById("themeText").innerText = "Light Mode";
+        }
+    };
+</script>
