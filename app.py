@@ -1,11 +1,18 @@
 from flask import Flask, render_template, request
 import pandas as pd
 import joblib
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 
 # Load trained ML pipeline
-model = joblib.load("best_churn_model.pkl")
+try:
+    model = joblib.load("best_churn_model.pkl")
+    print("Model loaded successfully")
+except Exception as e:
+    print("Model loading failed:", e)
+    model = None
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -31,9 +38,14 @@ def index():
         input_df = pd.DataFrame([data])
 
         # Predict
-        prediction = model.predict(input_df)[0]
+        if model is None:
+       return "Model not loaded"
+
+     prediction = model.predict(input_df)[0]
 
     return render_template("index.html", prediction=prediction)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+#if __name__ == "__main__":
+ #   app.run(debug=True)
+    if __name__ == "__main__":
+    app.run()
