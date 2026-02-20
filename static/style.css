@@ -325,6 +325,91 @@ body.light-mode .gradient-text {
     background-clip: text;
     color: #059669;
 }
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+
+@media (max-width: 900px) {
+
+    /* Layout fix */
+    body {
+        flex-direction: column;
+    }
+
+    /* Sidebar becomes top bar */
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 20px;
+    }
+
+    .bank-logo {
+        margin-bottom: 0;
+    }
+
+    /* Navigation becomes horizontal */
+    .nav-links {
+        display: flex;
+        gap: 10px;
+    }
+
+    .nav-links a {
+        margin-bottom: 0;
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    /* Main content full width */
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    /* Grid becomes vertical */
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Form becomes single column */
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full {
+        grid-column: span 1;
+    }
+
+    /* Reduce padding on cards */
+    .card {
+        padding: 20px;
+    }
+
+    /* Result text resize */
+    .result {
+        font-size: 1.25rem;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+
+    .bank-name {
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+
+    .creator-list li {
+        font-size: 0.9rem;
+    }
+}
 
 /* Remove glow in light mode */
 body.light-mode .sidebar .gradient-text {
