@@ -39,7 +39,7 @@ def index():
 
         # Predict
         if model is None:
-       return "Model not loaded"
+         return "Model not loaded"
 
      prediction = model.predict(input_df)[0]
 
