@@ -50,87 +50,147 @@
         <div class="card">
             <h3 class="card-title">Customer Details</h3>
 
-            <form method="POST">
-                <div class="form-grid">
+           <form method="POST">
 
-                    <div class="form-group">
-                        <label>Credit Score</label>
-                        <input name="CreditScore" required>
-                    </div>
+    <div class="form-grid">
 
-                    <div class="form-group">
-                        <label>Geography</label>
-                        <select name="Geography">
-                            <option>France</option>
-                            <option>Germany</option>
-                            <option>Spain</option>
-                        </select>
-                    </div>
+        <!-- Credit Score -->
+        <div class="form-group">
+            <label>Credit Score</label>
+            <input type="number" name="CreditScore"
+                   value="{{ form_data.get('CreditScore', '') }}" required>
+        </div>
 
-                    <div class="form-group">
-                        <label>Gender</label>
-                        <select name="Gender">
-                            <option>Male</option>
-                            <option>Female</option>
-                        </select>
-                    </div>
+        <!-- Geography -->
+        <div class="form-group">
+            <label>Geography</label>
+            <select name="Geography" required>
+                <option value="">Select</option>
+                <option value="France"
+                    {% if form_data.get('Geography') == 'France' %}selected{% endif %}>
+                    France
+                </option>
+                <option value="Germany"
+                    {% if form_data.get('Geography') == 'Germany' %}selected{% endif %}>
+                    Germany
+                </option>
+                <option value="Spain"
+                    {% if form_data.get('Geography') == 'Spain' %}selected{% endif %}>
+                    Spain
+                </option>
+            </select>
+        </div>
 
-                    <div class="form-group">
-                        <label>Age</label>
-                        <input name="Age" required>
-                    </div>
+        <!-- Gender -->
+        <div class="form-group">
+            <label>Gender</label>
+            <select name="Gender" required>
+                <option value="">Select</option>
+                <option value="Male"
+                    {% if form_data.get('Gender') == 'Male' %}selected{% endif %}>
+                    Male
+                </option>
+                <option value="Female"
+                    {% if form_data.get('Gender') == 'Female' %}selected{% endif %}>
+                    Female
+                </option>
+            </select>
+        </div>
 
-                    <div class="form-group">
-                        <label>Tenure</label>
-                        <input name="Tenure" required>
-                    </div>
+        <!-- Age -->
+        <div class="form-group">
+            <label>Age</label>
+            <input type="number" name="Age"
+                   value="{{ form_data.get('Age', '') }}" required>
+        </div>
 
-                    <div class="form-group">
-                        <label>Balance</label>
-                        <input name="Balance" required>
-                    </div>
+        <!-- Tenure -->
+        <div class="form-group">
+            <label>Tenure (Years)</label>
+            <input type="number" name="Tenure"
+                   value="{{ form_data.get('Tenure', '') }}" required>
+        </div>
 
-                    <div class="form-group">
-                        <label>Number of Products</label>
-                        <input name="NumOfProducts" required>
-                    </div>
+        <!-- Balance -->
+        <div class="form-group">
+            <label>Account Balance</label>
+            <input type="number" step="0.01" name="Balance"
+                   value="{{ form_data.get('Balance', '') }}" required>
+        </div>
 
-                    <div class="form-group">
-                        <label>Card Type</label>
-                        <select name="Card Type">
-                            <option>Silver</option>
-                            <option>Gold</option>
-                            <option>Platinum</option>
-                            <option>Diamond</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-    <label>Has Credit Card</label>
-    <select name="HasCrCard">
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-    </select>
-</div>
+        <!-- Number of Products -->
+        <div class="form-group">
+            <label>Number of Products</label>
+            <input type="number" name="NumOfProducts"
+                   value="{{ form_data.get('NumOfProducts', '') }}" required>
+        </div>
 
-                    <div class="form-group">
-                        <label>Active Member</label>
-                        <select name="IsActiveMember">
-                            <option value="1">Yes</option>
-                            <option value="0">No</option>
-                        </select>
-                    </div>
+        <!-- Has Credit Card -->
+        <div class="form-group">
+            <label>Has Credit Card</label>
+            <select name="HasCrCard" required>
+                <option value="">Select</option>
+                <option value="1"
+                    {% if form_data.get('HasCrCard') == '1' %}selected{% endif %}>
+                    Yes
+                </option>
+                <option value="0"
+                    {% if form_data.get('HasCrCard') == '0' %}selected{% endif %}>
+                    No
+                </option>
+            </select>
+        </div>
 
-                    <div class="form-group">
-                        <label>Estimated Salary</label>
-                        <input name="EstimatedSalary" required>
-                    </div>
+        <!-- Active Member -->
+        <div class="form-group">
+            <label>Active Member</label>
+            <select name="IsActiveMember" required>
+                <option value="">Select</option>
+                <option value="1"
+                    {% if form_data.get('IsActiveMember') == '1' %}selected{% endif %}>
+                    Yes
+                </option>
+                <option value="0"
+                    {% if form_data.get('IsActiveMember') == '0' %}selected{% endif %}>
+                    No
+                </option>
+            </select>
+        </div>
 
-                    <div class="form-group full">
-                        <button type="submit">Predict Churn</button>
-                    </div>
+        <!-- Estimated Salary -->
+        <div class="form-group">
+            <label>Estimated Salary</label>
+            <input type="number" step="0.01" name="EstimatedSalary"
+                   value="{{ form_data.get('EstimatedSalary', '') }}" required>
+        </div>
 
-                </div>
-            </form>
+        <!-- Card Type -->
+        <div class="form-group full">
+            <label>Card Type</label>
+            <select name="Card Type" required>
+                <option value="">Select</option>
+                <option value="Silver"
+                    {% if form_data.get('Card Type') == 'Silver' %}selected{% endif %}>
+                    Silver
+                </option>
+                <option value="Gold"
+                    {% if form_data.get('Card Type') == 'Gold' %}selected{% endif %}>
+                    Gold
+                </option>
+                <option value="Platinum"
+                    {% if form_data.get('Card Type') == 'Platinum' %}selected{% endif %}>
+                    Platinum
+                </option>
+            </select>
+        </div>
+
+        <!-- Submit -->
+        <div class="form-group full">
+            <button type="submit">Predict Churn</button>
+        </div>
+
+    </div>
+</form>
         </div>
 
         <!-- Result Card -->
